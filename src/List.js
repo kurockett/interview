@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-import { useState } from 'react';
-=======
 import { useState, useCallback } from 'react';
->>>>>>> 7929454 (first)
-
 import ListHeader from './ListHeader';
 import ListItem from './ListItem';
 
@@ -23,10 +18,6 @@ const shuffleArray = (array) => {
             array[currentIndex],
         ];
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 7929454 (first)
     return array;
 };
 
@@ -37,21 +28,8 @@ const List = () => {
     const [list, setList] = useState(initialList);
     const [checkedIds, setChecked] = useState([]);
 
-<<<<<<< HEAD
-    const handleShuffle = () => {
-        setList((prev) => shuffleArray([...prev]));
-    };
-
-    const handleCheck = (checked, id) => {
-        setChecked(() =>
-            checked
-                ? [...checkedIds, id]
-                : checkedIds.filter((checkedId) => checkedId !== id)
-        );
-    };
-=======
     const handleShuffle = useCallback(() => {
-        setList((prev) => [...prev].sort(() => Math.random() - 0.5));
+        setList((prev) => [].concat(shuffleArray(prev)));
     }, []);
 
     const handleCheck = useCallback((checked, id) => {
@@ -61,7 +39,6 @@ const List = () => {
                 : prev.filter((checkedId) => checkedId !== id)
         );
     }, []);
->>>>>>> 7929454 (first)
 
     return (
         <>
@@ -73,13 +50,8 @@ const List = () => {
                 <ListItem
                     key={item.id}
                     item={item}
-<<<<<<< HEAD
-                    checkedIds={checkedIds}
-                    onCheck={handleCheck}
-=======
                     onCheck={handleCheck}
                     checked={checkedIds.includes(item.id)}
->>>>>>> 7929454 (first)
                 />
             ))}
         </>
