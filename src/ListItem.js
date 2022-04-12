@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useMemo } from 'react';
 import { randomColor } from './List';
 
@@ -6,6 +7,13 @@ const ListItem = ({ item: { id, value }, checkedIds, onCheck }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const background = useMemo(() => `#${randomColor()}`, [includesId]);
 
+=======
+import { memo } from 'react';
+import { randomColor } from './List';
+
+const ListItem = ({ item: { id, value }, checked, onCheck }) => {
+    const background = `#${randomColor()}`;
+>>>>>>> 7929454 (first)
     const handleChange = ({ target: { checked } }) => onCheck(checked, id);
 
     return (
@@ -13,7 +21,11 @@ const ListItem = ({ item: { id, value }, checkedIds, onCheck }) => {
             <input
                 id={id}
                 type='checkbox'
+<<<<<<< HEAD
                 checked={includesId}
+=======
+                checked={checked}
+>>>>>>> 7929454 (first)
                 onChange={handleChange}
             />
             <label htmlFor={id}>
@@ -23,4 +35,8 @@ const ListItem = ({ item: { id, value }, checkedIds, onCheck }) => {
     );
 };
 
+<<<<<<< HEAD
 export default ListItem;
+=======
+export default memo(ListItem);
+>>>>>>> 7929454 (first)
